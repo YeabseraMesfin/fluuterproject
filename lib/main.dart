@@ -1,9 +1,22 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:settingspage/newsettings.dart';
-import 'package:settingspage/settings.dart';
+// import 'package:settingspage/settings.dart';
 
-void main() {
-  runApp(const MyApp());
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(EasyLocalization(
+    supportedLocales: [
+      Locale('en', 'US'),
+      Locale('am', 'ETH'),
+    ],
+    path: 'assets/translations',
+    saveLocale: true,
+    fallbackLocale: Locale('en', 'US'),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,6 +40,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       home: Settings(),
     );
   }

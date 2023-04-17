@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:settingspage/About%20us.dart';
 
@@ -16,7 +17,7 @@ class Settings extends StatelessWidget {
             children: [
               Row(
                 children: [ Icon(Icons.settings, color: Colors.lightBlue.shade200,),
-                  Text('Settings',style: TextStyle(fontSize:32, fontWeight: FontWeight.bold),
+                  Text('settings'.tr().toString(),style: TextStyle(fontSize:32, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -31,7 +32,7 @@ class Settings extends StatelessWidget {
                           child: Icon(Icons.language,color: Colors.lightBlue,),
                         ),
                         SizedBox(width: 5,),
-                        Text('Language', style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),),
+                        Text('languages'.tr().toString(), style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),),
                         const Spacer(),
                         Container(
                           height: 50,
@@ -45,7 +46,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   showGeneralDialog
                   
-                  (barrierDismissible: true,barrierLabel: 'Languages',context:context, pageBuilder: ((context, animation, secondaryAnimation) => Center(
+                  (barrierDismissible: true,barrierLabel: 'languages'.tr().toString(),context:context, pageBuilder: ((context, animation, secondaryAnimation) => Center(
                     child: Container(
                       height: 320,
                       margin: EdgeInsets.symmetric(horizontal: 16),
@@ -56,44 +57,52 @@ class Settings extends StatelessWidget {
                       ),
                       child: Scaffold(
                         backgroundColor: Colors.transparent,
-                        body: Column(children: [
-                          Text('Languages', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-                          Padding( 
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: Text('     Choose a differnet Language:                                                        ',textAlign: TextAlign.center,),
-                          ),
-                         Container(
-                          height: 50,
-                          width: 130,
-                          decoration: BoxDecoration(
-                            color: Colors.white60,
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: Center(child: Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [CircleAvatar(backgroundImage: AssetImage('assets/1.jpg'), radius: MediaQuery.of(context).size.height *0.02,),
-                              Text('English'),
-                            ],
-                          )),
-                         ),
-                         SizedBox(height: 10,),
-                         Container(
-                          height: 50,
-                          width: 130,
-                          decoration: BoxDecoration(
-                            
-                            color: Colors.white60,
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: Center(child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [CircleAvatar(backgroundImage: AssetImage('assets/2.jpg'), radius: MediaQuery.of(context).size.height *0.02,),
-                              Text('Amharic'),
-                            ],
-                          ),
-                          ),
-                         ),
-                        ],),
+                        body: Center(
+                          child: Column(children: [
+                            Text('languages'.tr().toString(), style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+                            Padding( 
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: Text('change-language'.tr().toString(),textAlign: TextAlign.center,),
+                            ),
+                           GestureDetector(
+                            onTap: () => context.locale = const Locale('en','US'),   bloc.add(ChangeLanguage(lang: true))
+                             child: Container(
+                              height: 50,
+                              width: 130,
+                              decoration: BoxDecoration(
+                                color: Colors.white60,
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: Center(child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [CircleAvatar(backgroundImage: AssetImage('assets/images/1.jpg'), radius: MediaQuery.of(context).size.height *0.02,),
+                                  Text('English'),
+                                ],
+                              )),
+                             ),
+                           ),
+                           SizedBox(height: 10,),
+                           GestureDetector(
+                            onTap: () => context.locale = const Locale('am','ETH'),
+                             child: Container(
+                              height: 50,
+                              width: 130,
+                              decoration: BoxDecoration(
+                                
+                                color: Colors.white60,
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: Center(child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [CircleAvatar(backgroundImage: AssetImage('assets/images/2.jpg'), radius: MediaQuery.of(context).size.height *0.02,),
+                                  Text('amharic'.tr().toString()),
+                                ],
+                              ),
+                              ),
+                             ),
+                           ),
+                          ],),
+                        ),
                       ),
                     ),
                   )
@@ -112,7 +121,7 @@ class Settings extends StatelessWidget {
                           child: Icon(Icons.info,color: Colors.lightBlue,),
                         ),
                         SizedBox(width: 5,),
-                        Text('About us', style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),),
+                        Text('about-us'.tr().toString(), style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),),
                         const Spacer(),
                         Container(
                           height: 50,

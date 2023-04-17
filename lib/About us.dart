@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,6 +8,7 @@ class About_us extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -15,9 +17,10 @@ class About_us extends StatelessWidget {
             children: [
             Row(
                children: [ Icon(Icons.info, color: Colors.lightBlue.shade200,),
-                  Text('About US',style: TextStyle(fontSize:32, fontWeight: FontWeight.bold),
+                  Text('about-us'.tr().toString(),style: TextStyle(fontSize:32, fontWeight: FontWeight.bold),
                   ),
                 ],
+
             )
           ],
           ),
